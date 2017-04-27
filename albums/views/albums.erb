@@ -1,0 +1,15 @@
+<h1>Your albums</h1>
+
+<ul>
+  <% @albums.each() do |album| %>
+    <li><a href = "/album/<%=album.id()%>"><%= album.name() %></a></li>
+  <% end %>
+</ul>
+
+<form action="/albums" method="post">
+  <label for="name">Album name</label>
+  <input type="text" name="name">
+  <label for="year">Release Year</label>
+  <input type="text" name="year">
+  <button type="submit" name="new-album">Add album</button>
+</form>

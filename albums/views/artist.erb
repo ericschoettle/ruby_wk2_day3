@@ -1,0 +1,26 @@
+<h2> <%= @artist.name() %></h2>
+
+<ul>
+  <% @artist.albums.each() do |album| %>
+    <li><a href = "/album/<%=album.id()%>"><%= album.name() %></a></li>
+  <% end %>
+</ul>
+
+<h3>Add an album</h3>
+
+<ul>
+  <% @albums.each() do |album| %>
+    <% if @artist.exist?(album) == false %>
+        <li><a href = "/artist/<%=@artist.id()%>/<%=album.id()%>"><%= album.name() %></a></li>
+      <% end %>
+  <% end %>
+</ul>
+
+
+<form action="/artist/<%= @artist.id()%>/<%= @albums.length() + 1 %>" method="post">
+  <label for="name">Album name</label>
+  <input type="text" name="name">
+  <label for="year">Release Year</label>
+  <input type="text" name="year">
+  <button type="submit" name="new-album">Add album to artist</button>
+</form>
